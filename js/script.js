@@ -272,6 +272,27 @@ const select = document.getElementById('select-level');
 // @ Realizziamo 3 Row Functions che verranno chiamate in relazione al livello di difficoltà
 // @ scelto
 
+// # MILESTONE 2 - CAMPO MINATO COMPLETO - Creiamo una funzione in grado di generare 16 numeri casuali
+
+/**
+ * 
+ * @param {Number} max 
+ * @param {Number} min 
+ */
+const generateRandomNumber = (max, min = 1, isMaxIn = true) => {
+    // * Vettore che conterrà i numeri casuali
+    const randomNumbers = [];
+
+    if (isMaxIn) max++;
+
+    for (let i = 0; i < 16; i++) {
+        randomNumbers[i] = Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    return randomNumbers;
+}
+
+
 const battleCamp10 = () => {
     for (let i = 1; i <= 100; i++) {
         const element = createCell();
@@ -346,19 +367,23 @@ button.addEventListener('click', (event) => {
     grid.innerHTML = '';
 
     switch (select.value) {
-        case 'sim':
+        case '49':
             battleCamp7();
             break;
 
-        case 'med':
+        case '81':
             battleCamp9();
             break;
 
-        case 'dif':
+        case '100':
             battleCamp10();
             break;
 
         default:
             console.log('Scegli uno dei 3 livelli di difficoltà!');
     }
+
+    // # MILESTONE 2 - CAMPO MINATO COMPLETO - Generiamo il vettore di numeri casuali richiamando la funzione
+    const randomArray = generateRandomNumber(1, parseInt(select.value), true);
+    console.log(randomArray);
 })
