@@ -1,0 +1,68 @@
+/* GENERICS */
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+/* HEADER */
+
+._header {
+    height: 70px;
+    background-color: #FFFFFF;
+}
+
+/* MAIN */
+
+main {
+    background-color: #7FFFD4;
+}
+
+/* Griglia che implementa Campo Minato */
+
+._grid {
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 60px auto;
+}
+
+._cells {
+    border: 1px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+._cells._cells-100 {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+._cells._cells-90 {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+._cells._cells-70 {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+._clicked {
+    background-color: dodgerblue;
+}
+
+/* FOOTER */
+
+._footer {
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+}
