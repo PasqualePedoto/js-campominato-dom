@@ -272,7 +272,7 @@ const select = document.getElementById('select-level');
 // @ Realizziamo 3 Row Functions che verranno chiamate in relazione al livello di difficoltà
 // @ scelto
 
-// # MILESTONE 2 - CAMPO MINATO COMPLETO - Creiamo una funzione in grado di generare 16 numeri casuali
+// # MILESTONE 3 - CAMPO MINATO COMPLETO - Creiamo una funzione in grado di generare 16 numeri casuali
 
 /**
  * 
@@ -282,16 +282,39 @@ const select = document.getElementById('select-level');
 const generateRandomNumber = (max, min = 1, isMaxIn = true) => {
     // * Vettore che conterrà i numeri casuali
     const randomNumbers = [];
+    let isPresent = 0;
 
     if (isMaxIn) max++;
 
     for (let i = 0; i < 16; i++) {
-        randomNumbers[i] = Math.floor(Math.random() * (max - min)) + min;
+        do {
+            isPresent = Math.floor(Math.random() * (max - min)) + min;
+        } while (randomNumbers.includes(isPresent))
+
+        randomNumbers[i] = isPresent;
     }
 
     return randomNumbers;
 }
 
+// # MILESTONE 3 - CAMPO MINATO COMPLETO - Realizziamo una funzione in grado di determinare se l'utente ha scoperto una bomba
+
+/**
+ * 
+ * @param {number} randomBomb 
+ * @param {number} number 
+ * @returns 
+ */
+
+let randomArray = [];
+
+const isBomb = (element) => {
+    let ctrl = false;
+    for (let i = 0; i < randomArray.length; i++) if (randomArray[i] === parseInt(element.innerText)) ctrl = true;
+    return ctrl;
+}
+
+// # Realizziamo le funzioni in grado di generare la griglia 10X10 9X9 e 7X7
 
 const battleCamp10 = () => {
     for (let i = 1; i <= 100; i++) {
@@ -304,11 +327,24 @@ const battleCamp10 = () => {
             if (element.classList.contains('_clicked')) return;
             else {
                 // # MILESTONE 1 - CAMPO MINATO COMPLETO - Incrementiamo il punteggio dell'utente A PRESCINDERE
-                userPoints++;
+                // userPoints++;
                 console.log('Punteggio attuale dell\'utente: ' + userPoints);
 
                 event.target.classList.toggle('_clicked');
                 console.log("Il numero contenuto nella cella è: " + event.target.dataset.number);
+
+                // # MILESTONE 3 - CAMPO MINATO COMPLETO
+                // * Richiamiamo la funzione in grado di determinare se l'utente ha scoperto una bomba, precedentemente
+                // * definita
+
+                if (isBomb(element) === true) {
+                    element.classList.add('loser-cell');
+                    console.log('Hai perso! Il tuo punteggio è stato: ' + userPoints);
+                }
+                else {
+                    userPoints++;
+                    console.log('continua.. Il tuo punteggio è: ' + userPoints);
+                }
             }
         })
 
@@ -327,11 +363,24 @@ const battleCamp9 = () => {
             if (element.classList.contains('_clicked')) return;
             else {
                 // # MILESTONE 1 - CAMPO MINATO COMPLETO - Incrementiamo il punteggio dell'utente A PRESCINDERE
-                userPoints++;
+                // userPoints++;
                 console.log('Punteggio attuale dell\'utente: ' + userPoints);
 
                 event.target.classList.toggle('_clicked');
                 console.log("Il numero contenuto nella cella è: " + event.target.dataset.number);
+
+                // # MILESTONE 3 - CAMPO MINATO COMPLETO
+                // * Richiamiamo la funzione in grado di determinare se l'utente ha scoperto una bomba, precedentemente
+                // * definita
+
+                if (isBomb(element) === true) {
+                    element.classList.add('loser-cell');
+                    console.log('Hai perso! Il tuo punteggio è stato: ' + userPoints);
+                }
+                else {
+                    userPoints++;
+                    console.log('continua.. Il tuo punteggio è: ' + userPoints);
+                }
             }
         })
 
@@ -350,11 +399,25 @@ const battleCamp7 = () => {
             if (element.classList.contains('_clicked')) return;
             else {
                 // # MILESTONE 1 - CAMPO MINATO COMPLETO - Incrementiamo il punteggio dell'utente A PRESCINDERE
-                userPoints++;
+                // userPoints++;
                 console.log('Punteggio attuale dell\'utente: ' + userPoints);
 
                 event.target.classList.toggle('_clicked');
                 console.log("Il numero contenuto nella cella è: " + event.target.dataset.number);
+
+                // # MILESTONE 3 - CAMPO MINATO COMPLETO
+                // * Richiamiamo la funzione in grado di determinare se l'utente ha scoperto una bomba, precedentemente
+                // * definita
+
+                if (isBomb(element) === true) {
+                    element.classList.add('loser-cell');
+                    console.log('Hai perso! Il tuo punteggio è stato: ' + userPoints);
+                }
+                else {
+                    userPoints++;
+                    console.log('continua.. Il tuo punteggio è: ' + userPoints);
+                }
+
             }
         })
 
@@ -384,6 +447,7 @@ button.addEventListener('click', (event) => {
     }
 
     // # MILESTONE 2 - CAMPO MINATO COMPLETO - Generiamo il vettore di numeri casuali richiamando la funzione
-    const randomArray = generateRandomNumber(1, parseInt(select.value), true);
+    randomArray = generateRandomNumber(1, parseInt(select.value), true);
     console.log(randomArray);
 })
+

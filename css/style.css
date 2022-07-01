@@ -56,6 +56,11 @@ main {
 
 ._clicked {
     background-color: dodgerblue;
+    color: white;
+}
+
+._clicked.loser-cell {
+    background-color: red;
 }
 
 /* FOOTER */
