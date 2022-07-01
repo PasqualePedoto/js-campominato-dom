@@ -314,6 +314,25 @@ const isBomb = (element) => {
     return ctrl;
 }
 
+// # Realizziamo la funzione in grado di valutare come la partita è terminata 
+
+/**
+ * 
+ * @param {bool} userWin 
+ * @param {bool} userLose 
+ */
+const gameOver = (userWin = false) => {
+    if (userWin === true) {
+        alert('HAI VINTOOOOOOO!!!!!');
+    } else {
+        alert('HAI PERSO! Il tuo punteggio è stato: ' + userPoints);
+
+        //Cancelliamo la griglia
+        grid.innerHTML = '';
+    }
+}
+
+
 // # Realizziamo le funzioni in grado di generare la griglia 10X10 9X9 e 7X7
 
 const battleCamp10 = () => {
@@ -339,11 +358,11 @@ const battleCamp10 = () => {
 
                 if (isBomb(element) === true) {
                     element.classList.add('loser-cell');
-                    console.log('Hai perso! Il tuo punteggio è stato: ' + userPoints);
+                    gameOver(false);
                 }
                 else {
                     userPoints++;
-                    if (userPoints === 84) alert('HAI VINTO!');
+                    if (userPoints === 84) gameOver(true);
                     else console.log('continua.. Il tuo punteggio è: ' + userPoints);
                 }
             }
@@ -376,11 +395,11 @@ const battleCamp9 = () => {
 
                 if (isBomb(element) === true) {
                     element.classList.add('loser-cell');
-                    console.log('Hai perso! Il tuo punteggio è stato: ' + userPoints);
+                    gameOver(false);
                 }
                 else {
                     userPoints++;
-                    if (userPoints === 65) alert('HAI VINTO!');
+                    if (userPoints === 65) gameOver(true);
                     else console.log('continua.. Il tuo punteggio è: ' + userPoints);
                 }
             }
@@ -413,14 +432,13 @@ const battleCamp7 = () => {
 
                 if (isBomb(element) === true) {
                     element.classList.add('loser-cell');
-                    console.log('Hai perso! Il tuo punteggio è stato: ' + userPoints);
+                    gameOver(false);
                 }
                 else {
                     userPoints++;
-                    if (userPoints === 33) alert('HAI VINTO!');
+                    if (userPoints === 33) gameOver(true);
                     else console.log('continua.. Il tuo punteggio è: ' + userPoints);
                 }
-
             }
         })
 
