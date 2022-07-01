@@ -343,7 +343,8 @@ const battleCamp10 = () => {
                 }
                 else {
                     userPoints++;
-                    console.log('continua.. Il tuo punteggio è: ' + userPoints);
+                    if (userPoints === 84) alert('HAI VINTO!');
+                    else console.log('continua.. Il tuo punteggio è: ' + userPoints);
                 }
             }
         })
@@ -379,7 +380,8 @@ const battleCamp9 = () => {
                 }
                 else {
                     userPoints++;
-                    console.log('continua.. Il tuo punteggio è: ' + userPoints);
+                    if (userPoints === 65) alert('HAI VINTO!');
+                    else console.log('continua.. Il tuo punteggio è: ' + userPoints);
                 }
             }
         })
@@ -415,7 +417,8 @@ const battleCamp7 = () => {
                 }
                 else {
                     userPoints++;
-                    console.log('continua.. Il tuo punteggio è: ' + userPoints);
+                    if (userPoints === 33) alert('HAI VINTO!');
+                    else console.log('continua.. Il tuo punteggio è: ' + userPoints);
                 }
 
             }
