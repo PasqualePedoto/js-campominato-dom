@@ -449,6 +449,7 @@ const battleCamp7 = () => {
 button.addEventListener('click', (event) => {
 
     grid.innerHTML = '';
+    userPoints = 0;
 
     switch (select.value) {
         case '49':
