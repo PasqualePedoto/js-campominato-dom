@@ -59,7 +59,7 @@ main {
     color: white;
 }
 
-._clicked.loser-cell {
+.loser-cell {
     background-color: red;
 }
 

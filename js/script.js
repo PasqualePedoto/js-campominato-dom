@@ -146,10 +146,11 @@ const gameOver = (userWin = false) => {
     if (userWin === true) {
         alert('HAI VINTOOOOOOO!!!!!');
     } else {
-        alert('HAI PERSO! Il tuo punteggio è stato: ' + userPoints);
-
         //Cancelliamo la griglia
-        grid.innerHTML = '';
+        setTimeout(() => {
+            alert('HAI PERSO! Il tuo punteggio è stato: ' + userPoints);
+            grid.innerHTML = '';
+        }, 1000);
     }
 }
 
@@ -179,9 +180,8 @@ const battleCamp10 = () => {
 
                 if (isBomb(element) === true) {
                     element.classList.add('loser-cell');
-                    gameOver(false);
-                }
-                else {
+                    setTimeout(gameOver(false), 3000);
+                } else {
                     userPoints++;
                     if (userPoints === 84) gameOver(true);
                     else console.log('continua.. Il tuo punteggio è: ' + userPoints);
@@ -216,13 +216,14 @@ const battleCamp9 = () => {
 
                 if (isBomb(element) === true) {
                     element.classList.add('loser-cell');
-                    gameOver(false);
                 }
                 else {
                     userPoints++;
                     if (userPoints === 65) gameOver(true);
                     else console.log('continua.. Il tuo punteggio è: ' + userPoints);
                 }
+
+                if (isBomb(element) === true) gameOver(false);
             }
         })
 
