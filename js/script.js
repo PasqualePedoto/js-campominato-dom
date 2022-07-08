@@ -150,7 +150,7 @@ const gameOver = (userWin = false) => {
         setTimeout(() => {
             alert('HAI PERSO! Il tuo punteggio è stato: ' + userPoints);
             grid.innerHTML = '';
-        }, 1000);
+        }, 100);
     }
 }
 
